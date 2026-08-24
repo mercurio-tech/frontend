@@ -1,0 +1,20 @@
+.projectCreation {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    max-width: 50dvw;
+}
+
+.projectCreation h3 {
+    font-weight: 300;
+}
+
+label {
+    text-align: left;
+}
+hr {
+    border-color: #E2E8F0;
+}
