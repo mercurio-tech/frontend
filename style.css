@@ -26,11 +26,12 @@ body {
 
 nav {
     position: relative;
-    padding: 0 80px;
+    padding: 1.5rem 2rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    /*height: 80px;*/
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -63,9 +64,25 @@ nav .logoTexts h3 {
 nav .links {
     display: flex;
     align-items: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    row-gap: 1rem;
+    flex-direction: column;
+}
+
+@media (max-width:1024px) {
+    nav .links :first-child {
+        margin-top: 1rem;
+    }
+    nav .links :last-child {
+        margin-bottom: 1rem;
+    }
+}
+@media (min-width:1024px) {
+    nav .links {
+        flex-direction: row;
+    }
+    nav {
+        flex-direction: row;
+    }
 }
 
 nav .links a {
@@ -145,14 +162,14 @@ header .left {
 }
 
 header .left h1 {
-    font-size: 48px;
+    font-size: 2rem;
     font-weight: bolder;
     color: #FFF;
 }
 
 header .left h3 {
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 300;
     color: #94A3B8;
 }
