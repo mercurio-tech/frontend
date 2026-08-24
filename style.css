@@ -21,7 +21,7 @@ img {
 }
 
 body {
-    background-color: #FBF9F4;
+    background-color: #F8FAFC;
 }
 
 nav {
@@ -202,4 +202,70 @@ section .searchBar input::placeholder {
 section .searchBar i {
     font-size: 18px;
     color: #0B2545;
+}
+
+.project-container {
+    background-color: #FFF;
+    width: 24.625rem;
+    height: 26.875rem;
+    margin-right: 5rem;
+    margin-top: 32px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.10);
+    padding-bottom: 10px;
+}
+
+.project-container img {
+    width: 24.625rem;
+    height: 12.5rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 20px 0 20px;
+}
+
+.text-container h1 {
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.text-container h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+
+}
+
+.members-container {
+    padding: 0 20px 0 20px;
+    margin-top: 20px;
+}
+
+.badge-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px;
+}
+
+.badge-container .badge {
+    background-color: #F3E8FF;
+    color: #6B21A8;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.badge-container .data {
+    padding: 5px;
+}
+
+.badge-container h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
 }
