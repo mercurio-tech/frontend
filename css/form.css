@@ -41,11 +41,16 @@ input,
 textarea,
 select {
     background-color: #ffffff;
-    border-color: #e2e8f0;
+    border: 1px solid #E2E8F0;
     border-width: 1px;
-    border-radius: 0.2rem;
+    border-radius: 0.35rem;
     margin-bottom: 1rem;
-    padding: 0.25rem;
+    padding: 0.5rem;
+    outline: none;
+}
+
+input:focus {
+    border: 1px solid #c8ccd3;
 }
 
 button:not(.show-password) {
