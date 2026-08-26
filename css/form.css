@@ -1,0 +1,101 @@
+.form {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+    border-width: 24px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 1.5rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    max-width: 75dvw;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 1024px) {
+    .form {
+        max-width: 50dvw;
+    }
+}
+.form h3 {
+    font-weight: 300;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+label {
+    text-align: left;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+hr {
+    border-color: #e2e8f0;
+    margin-bottom: 0.5rem;
+}
+
+input,
+textarea,
+select {
+    background-color: #ffffff;
+    border-color: #e2e8f0;
+    border-width: 1px;
+    border-radius: 0.2rem;
+    margin-bottom: 1rem;
+    padding: 0.25rem;
+}
+
+button:not(.show-password) {
+    background-color: white;
+    border-color: #e2e8f0;  
+    border-width: 1px;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition-duration: 0.1s;
+    transition-property: background-color;
+}
+
+button.show-password {
+    font-size: 1.2rem;
+    background-color: transparent;
+    cursor: pointer;
+    border-width: 0px;
+}
+#toggle-password-visibility {
+    padding: 0.25rem;
+}
+#password-error, #name-error, #validation-error {
+    color: red;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+button:not(.show-password):hover {
+    background-color: #f0f0f0;
+}
+
+button:not(.show-password)active {
+    background-color: #e0e0e0;
+}
+
+button.main {
+    background-color: #0b2545;
+    border: solid 2px #0b2545;
+    border-radius: 8px;
+    color: white;
+}
+
+button.main:hover {
+    border: solid 2px #0b2545;
+    background-color: #fff;
+    color: #0b2545;
+}
+
+button.main:active {
+    background-color: #0b2545;
+    border: solid 2px #0b2545;
+    color: white;
+}
