@@ -68,9 +68,9 @@ nav .logoTexts h3 {
 
 nav .links {
     display: flex;
-    align-items: center;
+    align-items: right;
     flex: 2;
-    justify-content: center;
+    justify-content: right;
     row-gap: 1rem;
     flex-direction: column;
 }
@@ -110,7 +110,7 @@ nav .signIn a {
     align-items: center;
     justify-content: center;
     gap: 4px;
-    width: 135px;
+    width: 100px;
     height: 44px;
     background-color: #0b2545;
     color: #fff;
