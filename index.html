@@ -40,21 +40,20 @@
     </header>
 
     <section class="main-section">
-        <div class="searchBar">
-            <i class="bx bx-search"></i>
-            <input type="text" placeholder="Pesquisar">
+        <div class="row">
+            <div class="searchBar">
+                <i class="bx bx-search"></i>
+                <input type="text" placeholder="Pesquisar">
+            </div>
+            <div id="tipos_pesquisa" class="self-center">
+                <button type="submit">Procurar</button>
+                <select name="" id="">
+                    <option value="">Alunos</option>
+                    <option value="">Nome do Projeto</option>
+                </select>tipo de pesquisa
+            </div>
         </div>
-        <div id="tipos_pesquisa">
-            <select name="" id="">
-                <option value="">Alunos</option>
-                <option value="">Nome do Projeto</option>
-            </select>tipo de pesquisa
-            <button type="submit">Procurar</button>
-            
-        </div>
-        <nav>
-                Filtros: 
-                
+        <div class="filters">
                 <select name="materia" id="materia">
                     <option value="">
                     TAG
@@ -99,8 +98,8 @@
                         2024
                     </option>
                 </select>
-                
-    </nav>
+                <button type="submit">Filtrar</button>
+        </div>
         <section class="projects">
             <a href="projeto.html">
                 <div class="project-container">

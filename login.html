@@ -1,32 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/stylenaoavaliadores.css">
-    <link rel="stylesheet" href="css/form.css">
-    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
-    <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
-    <script src="scripts/auth.js"></script>
-    <script src="scripts/senha.js"></script>
-    <title>Login - Colégio Mercúrio</title>
-</head>
-<body>
-    <nav>
-        <div class="logo">
-            <a href="index.html"><img class="logoImg" src="assets/images/logo.png" a href="index.html"></a>
-            <div class="logoTexts">
-                <h2>Colégio Mercúrio</h2>
-                <h3>Semana de Iniciação Científica</h3>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/form.css" />
+        <link
+            href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css"
+            rel="stylesheet"
+        />
+        <script src="scripts/auth.js"></script>
+        <script src="scripts/senha.js"></script>
+        <title>Login - Colégio Mercúrio</title>
+    </head>
+    <body>
+        <nav>
+            <div class="logo">
+                <a href="index.html"
+                    ><img
+                        class="logoImg"
+                        src="assets/images/logo.png"
+                        a
+                        href="index.html"
+                /></a>
+                <div class="logoTexts">
+                    <h2>Colégio Mercúrio</h2>
+                    <h3>Semana de Iniciação Científica</h3>
+                </div>
             </div>
-        </div>
-        <div class="links">
-            <a href="index.html">Início</a>
-            <a href="cadastro-projeto.html">Cadastro de Projeto</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
-    </nav>
-    <section class="middle">
+            <div class="links">
+                <a href="index.html">Início</a>
+                <a href="cadastro-projeto.html">Cadastro de Projeto</a>
+                <a href="sobre.html">Sobre</a>
+            </div>
+            <div class="signIn">
+                <a href="login.html"
+                    ><i class="bx bx-user"></i>Entrar como avaliador</a
+                >
+            </div>
+        </nav>
+        <section class="middle">
             <div class="form">
                 <h2>Login</h2>
                 <h3>Entre com suas credenciais</h3>
@@ -41,7 +58,7 @@
                     />
                     <p id="name-error" class="hidden"></p>
                 </div>
-                
+
                 <label for="password">Senha</label>
                 <div>
                     <input
@@ -49,9 +66,16 @@
                         id="password"
                         placeholder="Ex: senha123"
                         oninput="validatePassword()"
+                    />
+                    <button
+                        class="show-password"
+                        type="button"
+                        onclick="togglePasswordVisibility()"
                     >
-                    <button class="show-password" type="button" onclick="togglePasswordVisibility()">
-                        <i class="bx bx-eye-closed" id="toggle-password-visibility"></i>
+                        <i
+                            class="bx bx-eye-closed"
+                            id="toggle-password-visibility"
+                        ></i>
                     </button>
                     <p id="password-error" class="hidden"></p>
                 </div>
@@ -60,6 +84,6 @@
                     <button class="main" onclick="onLogin()">Login</button>
                 </div>
             </div>
-    </section>
-</body>
+        </section>
+    </body>
 </html>

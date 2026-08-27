@@ -156,6 +156,10 @@ textarea {
     gap: 1rem;
 }
 
+.self-center {
+    align-content: center;
+}
+
 .column {
     display: flex;
     flex-direction: column;
@@ -167,60 +171,60 @@ textarea {
 }
 
 footer {
-      background-color: #0b192c;
-      color: #ffffff;
-      padding: 40px 5% 20px 5%;
-      margin-top: 50px;
-    }
+    background-color: #0b192c;
+    color: #ffffff;
+    padding: 40px 5% 20px 5%;
+    margin-top: 50px;
+}
 
-    .footer-content {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding-bottom: 30px;
-    }
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 30px;
+}
 
-    .footer-info h3 {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
+.footer-info h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
 
-    .footer-info p {
-      font-size: 13px;
-      color: #94a3b8;
-      max-width: 350px;
-      line-height: 1.5;
-    }
+.footer-info p {
+    font-size: 13px;
+    color: #94a3b8;
+    max-width: 350px;
+    line-height: 1.5;
+}
 
-    .footer-nav h4 {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 12px;
-      color: #94a3b8;
-    }
+.footer-nav h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    color: #94a3b8;
+}
 
-    .footer-nav ul {
-      list-style: none;
-    }
+.footer-nav ul {
+    list-style: none;
+}
 
-    .footer-nav ul li {
-      margin-bottom: 8px;
-    }
+.footer-nav ul li {
+    margin-bottom: 8px;
+}
 
-    .footer-nav ul li a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 13px;
-    }
+.footer-nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+}
 
-    .footer-bottom {
-      max-width: 1000px;
-      margin: 20px auto 0 auto;
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: #64748b;
-    }
+.footer-bottom {
+    max-width: 1000px;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #64748b;
+}

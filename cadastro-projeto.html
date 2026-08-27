@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="css/stylenaoavaliadores.css" />
+        <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/form.css" />
         <link rel="stylesheet" href="css/cadastro.css" />
         <link
@@ -20,7 +20,9 @@
     <body>
         <nav>
             <div class="logo">
-                <a href="index.html"><img class="logoImg" src="assets/images/logo.png" /></a>
+                <a href="index.html"
+                    ><img class="logoImg" src="assets/images/logo.png"
+                /></a>
                 <div class="logoTexts">
                     <h2>Colégio Mercúrio</h2>
                     <h3>Semana de Iniciação Científica</h3>
@@ -30,6 +32,11 @@
                 <a href="index.html">Início</a>
                 <a href="cadastro-projeto.html">Cadastro de Projeto</a>
                 <a href="sobre.html">Sobre</a>
+            </div>
+            <div class="signIn">
+                <a href="login.html"
+                    ><i class="bx bx-user"></i>Entrar como avaliador</a
+                >
             </div>
         </nav>
         <section class="middle">
@@ -88,11 +95,11 @@
                     id="authors"
                     placeholder="Separe por virgulas"
                 />
-                <label for="dropZone">Imagem do Projeto</label>
-                <div class="drop-zone" id="dropZone">
+                <label for="dropZoneImage">Imagem do Projeto</label>
+                <div class="drop-zone" id="dropZoneImage">
                     <input
                         type="file"
-                        id="fileInput"
+                        id="fileInputImage"
                         accept="image/jpeg,image/png,image/jpg"
                         hidden
                     />
@@ -106,7 +113,27 @@
                         </p>
                     </div>
 
-                    <div class="file-list" id="fileList"></div>
+                    <div class="file-list" id="fileListImage"></div>
+                </div>
+                <label for="dropZonePDF">PDF do projeto</label>
+                <div class="drop-zone" id="dropZonePDF">
+                    <input
+                        type="file"
+                        id="fileInputPDF"
+                        accept="application/pdf"
+                        hidden
+                    />
+                    <div class="drop-zone-content">
+                        <i class="bx bx-image-plus"></i>
+                        <p class="drop-zone-text">
+                            Clique para fazer upload ou arraste o arquivo
+                        </p>
+                        <p class="drop-zone-hint">
+                            Suporta PDF (Tamanho Máximo: 50MB)
+                        </p>
+                    </div>
+
+                    <div class="file-list" id="fileListPDF"></div>
                 </div>
                 <div class="right action-button-div">
                     <button>Cancelar</button>
@@ -115,23 +142,30 @@
             </div>
         </section>
         <footer>
-    <div class="footer-content">
-      <div class="footer-info">
-        <h3>Colégio Mercúrio — SIC</h3>
-        <p>Estimulando a curiosidade, a pesquisa científica e o desenvolvimento de soluções inovadoras para o futuro da nossa sociedade.</p>
-      </div>
-      <div class="footer-nav">
-        <h4>Navegação</h4>
-        <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Colégio Mercúrio. Semana de Iniciação Científica (SIC). Todos os direitos reservados.</p>
-      <p>Desenvolvido para fins educacionais.</p>
-    </div>
-  </footer>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Colégio Mercúrio — SIC</h3>
+                    <p>
+                        Estimulando a curiosidade, a pesquisa científica e o
+                        desenvolvimento de soluções inovadoras para o futuro da
+                        nossa sociedade.
+                    </p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 Colégio Mercúrio. Semana de Iniciação Científica
+                    (SIC). Todos os direitos reservados.
+                </p>
+                <p>Desenvolvido para fins educacionais.</p>
+            </div>
+        </footer>
     </body>
 </html>
