@@ -86,14 +86,25 @@ button[type="submit"] {
 }
 
 .filters {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    padding: 1.8rem;
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+    padding-bottom: 1.8rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: solid 2px #e2e8f0;
     border-radius: 0.5rem;
+}
+
+.filters .content {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.filters .filters-title {
+    height: 1.8rem;
+    line-height: 1.8rem;
+    font-weight: 500;
 }
 
 .filters select {
