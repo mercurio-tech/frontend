@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/form.css" />
+        <link rel="stylesheet" href="css/cadastro.css" />
+        <link rel="stylesheet" href="css/editar-projeto.css" />
+        <link
+            href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css"
+            rel="stylesheet"
+        />
+        <script src="scripts/api.js"></script>
+        <script src="scripts/auth.js"></script>
+        <script src="scripts/nav.js"></script>
+        <script src="scripts/cadastro-projeto.js"></script>
+        <script src="scripts/editar-projeto.js"></script>
+        <title>Editar Projeto - Colégio Mercúrio</title>
+    </head>
+    <body>
+        <nav>
+            <div class="logo">
+                <a href="index.html"
+                    ><img class="logoImg" src="assets/images/logo.png"
+                /></a>
+                <div class="logoTexts">
+                    <h2>Colégio Mercúrio</h2>
+                    <h3>Semana de Iniciação Científica</h3>
+                </div>
+            </div>
+            <div class="links">
+                <a href="index.html">Início</a>
+                <a href="cadastro-projeto.html" id="cadastro-projeto" class="hidden">Cadastro de Projeto</a>
+                <a href="sobre.html">Sobre</a>
+            </div>
+
+            <div class="signIn">
+                <button id="logout" class="hidden">Sair da conta</button>
+                <a href="login.html" id="login" class="hidden"><i class="bx bx-user"></i>Entrar como avaliador</a>
+            </div>
+        </nav>
+        <section class="middle">
+            <div class="form">
+                <h2>Editar Projeto</h2>
+                <h3>Atualize as informações do projeto.</h3>
+                <hr />
+
+                <p id="statusMsg" class="status-msg hidden"></p>
+
+                <label for="title">Título do Projeto</label>
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Ex: Sistema Inteligente de Irrigação Automatizada"
+                />
+                <label for="subtitle">Subtítulo</label>
+                <input
+                    type="text"
+                    id="subtitle"
+                    placeholder="Ex: Monitoramento remoto com IoT e Inteligência Artificial"
+                />
+                <label for="tags">Palavras-chave</label>
+                <input
+                    type="text"
+                    id="tags"
+                    placeholder="Separe por virgulas"
+                />
+                <label for="type">Tipo</label>
+                <select id="type">
+                    <option value="SIC">SIC</option>
+                    <option value="SIP">SIP</option>
+                </select>
+                <label for="description">Descrição</label>
+                <textarea
+                    id="description"
+                    placeholder="Descreva os detalhes, metodologia utilizada e resultados do projeto."
+                    cols="50"
+                    rows="5"
+                ></textarea>
+                <div class="row">
+                    <div class="column flex-fill">
+                        <label for="professor">Professor Orientador</label>
+                        <input
+                            type="text"
+                            id="professor"
+                            placeholder="Ex: Prof. José Roberto"
+                        />
+                    </div>
+                    <div class="column flex-fill">
+                        <label for="year">Ano Letivo</label>
+                        <input type="text" id="year" placeholder="Ex: 2026" />
+                    </div>
+                </div>
+                <label for="authors">Nome dos Alunos</label>
+                <input
+                    type="text"
+                    id="authors"
+                    placeholder="Separe por virgulas"
+                />
+
+                <label for="dropZoneImage">Imagem do Projeto</label>
+                <p id="currentImageLabel" class="current-file-info hidden">
+                    Imagem atual:
+                    <img id="currentImageThumb" class="current-image-thumb" src="" alt="Imagem atual do projeto">
+                </p>
+                <div class="drop-zone" id="dropZoneImage">
+                    <input
+                        type="file"
+                        id="fileInputImage"
+                        accept="image/jpeg,image/png,image/jpg"
+                        hidden
+                    />
+                    <div class="drop-zone-content">
+                        <i class="bx bx-image-plus"></i>
+                        <p class="drop-zone-text">
+                            Clique para fazer upload ou arraste o arquivo
+                        </p>
+                        <p class="drop-zone-hint">
+                            Suporta PNG, JPG e JPEG (Tamanho Máximo: 10MB) — Deixe em branco para manter a imagem atual
+                        </p>
+                    </div>
+
+                    <div class="file-list" id="fileListImage"></div>
+                </div>
+                <label for="dropZonePDF">PDF do projeto</label>
+                <p id="currentPdfLabel" class="current-file-info hidden">
+                    PDF atual: <a id="currentPdfLink" href="#" target="_blank" rel="noopener">ver arquivo</a>
+                </p>
+                <div class="drop-zone" id="dropZonePDF">
+                    <input
+                        type="file"
+                        id="fileInputPDF"
+                        accept="application/pdf"
+                        hidden
+                    />
+                    <div class="drop-zone-content">
+                        <i class="bx bx-image-plus"></i>
+                        <p class="drop-zone-text">
+                            Clique para fazer upload ou arraste o arquivo
+                        </p>
+                        <p class="drop-zone-hint">
+                            Suporta PDF (Tamanho Máximo: 50MB) — Deixe em branco para manter o PDF atual
+                        </p>
+                    </div>
+
+                    <div class="file-list" id="fileListPDF"></div>
+             </div>
+                <div class="right action-button-div">
+                    <a id="btnCancelar" href="index.html"><button type="button">Cancelar</button></a>
+                    <button type="button" class="main" id="btnSalvar">Salvar Alterações</button>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Colégio Mercúrio — SIC</h3>
+                    <p>
+                        Estimulando a curiosidade, a pesquisa científica e o
+                        desenvolvimento de soluções inovadoras para o futuro da
+                        nossa sociedade.
+                    </p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 Colégio Mercúrio. Semana de Iniciação Científica
+                    (SIC). Todos os direitos reservados.
+                </p>
+                <p>Desenvolvido para fins educacionais.</p>
+            </div>
+        </footer>
+    </body>
+</html>
