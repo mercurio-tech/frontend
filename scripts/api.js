@@ -50,7 +50,7 @@ async function getProjectsRequest(page) {
 
 async function getDetailedProjectRequest(id) {
     const result = await get(`getProjectDetails/${id}`)
-    if (checkError) {
+    if (checkError(result)) {
         return null;
     }
     return result.result;
@@ -85,4 +85,14 @@ async function registerAdmin(admin) {
 
 async function registerProject(project) {
     // to-do
+}
+
+async function updateProject(id, project) {
+    return await post(`updateProject/${id}`, {
+        auth: {
+            username: localStorage.getItem("nome"),
+            password: localStorage.getItem("senha"),
+        },
+        project: project,
+    });
 }
