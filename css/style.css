@@ -68,6 +68,7 @@ nav .logoTexts h3 {
 
 nav .links {
     display: flex;
+    text-align: center;
     align-items: center;
     flex: 2;
     justify-content: center;
@@ -111,14 +112,13 @@ nav .signIn {
     align-items: center;
 }
 
-nav .signIn a {
+nav .signIn a, nav .signIn button {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
     width: 135px;
     height: 44px;
-    background-color: #0b2545;
     color: #fff;
     padding: 8px;
     border: solid 2px #0b2545;
@@ -130,13 +130,29 @@ nav .signIn a {
     transition: all 0.15s ease;
 }
 
+nav .signIn a {
+    background-color: #0b2545;
+    border: solid 2px #0b2545;
+}
+
+nav .signIn button {
+    background-color: red;
+    border: solid 2px red;
+}
+
+nav .signIn button:hover {
+    border: solid 2px darkred;
+    background-color: #fff;
+    color: darkred;
+}
+
 nav .signIn a:hover {
     border: solid 2px #0b2545;
     background-color: #fff;
     color: #0b2545;
 }
 
-nav .signIn a i {
+nav .signIn a i, nav .signIn button i {
     font-size: 16px;
 }
 
@@ -173,7 +189,7 @@ textarea {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 footer {

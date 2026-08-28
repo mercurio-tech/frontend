@@ -8,6 +8,9 @@
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
     <title>Início - Colégio Mercúrio</title>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/nav.js"></script>
 </head>
 <body>
     <nav>
@@ -18,15 +21,16 @@
                 <h3>Semana de Iniciação Científica</h3>
             </div>
         </div>
-        <div class="links">
-            <a href="index.html">Início</a>
-            <a href="cadastro-projeto.html">Cadastro de Projeto</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
+            <div class="links">
+                <a href="index.html">Início</a>
+                <a href="cadastro-projeto.html" id="cadastro-projeto" class="hidden">Cadastro de Projeto</a>
+                <a href="sobre.html">Sobre</a>
+            </div>
 
-        <div class="signIn">
-            <a href="login.html"><i class="bx bx-user"></i>Entrar como avaliador</a>
-        </div>
+            <div class="signIn">
+                <button id="logout" class="hidden">Sair da conta</button>
+                <a href="login.html" id="login" class="hidden"><i class="bx bx-user"></i>Entrar como avaliador</a>
+            </div>
     </nav>
 
     <!-- Estrutura agrupada dos headers -->

@@ -28,8 +28,8 @@ function validatePassword() {
     if (password.length < 8) {
         text = "A senha deve ter pelo menos 8 caracteres.";
     }
-    if (password.length > 100) {
-        text = "A senha não deve exceder 100 caracteres.";
+    if (password.length > 18) {
+        text = "A senha não deve exceder 18 caracteres.";
     }
     if (!/[A-Z]/.test(password)) {
         text = "A senha deve conter pelo menos uma letra maiúscula.";
@@ -65,10 +65,11 @@ async function onLogin() {
         const name = document.getElementById("name").value;
         const password = document.getElementById("password").value;
         const res = await checkAuth(name, password);
+        console.log(res);
         if (res) {
             localStorage.setItem("nome", name);
             localStorage.setItem("senha", password);
-            //window.location.href = "index.html";
+            window.location.href = "index.html";
         } else {
             document.getElementById("validation-error").innerText = "Credenciais inválidas.";
             document.getElementById("validation-error").classList.remove("hidden");
