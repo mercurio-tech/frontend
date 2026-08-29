@@ -65,14 +65,45 @@ async function onLogin() {
         const name = document.getElementById("name").value;
         const password = document.getElementById("password").value;
         const res = await checkAuth(name, password);
-        console.log(res);
         if (res) {
             localStorage.setItem("nome", name);
             localStorage.setItem("senha", password);
             window.location.href = "index.html";
         } else {
-            document.getElementById("validation-error").innerText = "Credenciais inválidas.";
-            document.getElementById("validation-error").classList.remove("hidden");
+            document.getElementById("validation-error").innerText =
+                "Credenciais inválidas.";
+            document
+                .getElementById("validation-error")
+                .classList.remove("hidden");
+        }
+    }
+}
+
+async function onRegister() {
+    if (validateName() && validatePassword()) {
+        const name = document.getElementById("name").value;
+        const password = document.getElementById("password").value;
+        const perms = Number(document.getElementById("perms").value);
+        const [res, err] = await registerAdmin(
+            createAdmin(name, password, perms),
+        );
+        if (res) {
+            document.getElementById("account-created-dialog").showModal();
+        } else {
+            if (err === "Duplicate Admin") {
+                document.getElementById("name-error").innerText =
+                    "Este nome já existe";
+                document
+                    .getElementById("name-error")
+                    .classList.remove("hidden");
+                document.getElementById("name").focus();
+            } else {
+                document.getElementById("validation-error").innerText =
+                    "Credenciais inválidas.";
+                document
+                    .getElementById("validation-error")
+                    .classList.remove("hidden");
+            }
         }
     }
 }

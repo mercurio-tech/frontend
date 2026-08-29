@@ -17,9 +17,19 @@
         <script src="scripts/auth.js"></script>
         <script src="scripts/nav.js"></script>
         <script src="scripts/senha.js"></script>
-        <title>Login - Colégio Mercúrio</title>
+        <title>Registrar - Colégio Mercúrio</title>
     </head>
     <body>
+        <dialog id="account-created-dialog">
+            <div class="dialogBody">
+                <h1>Conta criada com sucesso</h1>
+                <div class="middle">
+                    <button commandfor="account-created-dialog" command="close">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </dialog>
         <nav>
             <div class="logo">
                 <a href="index.html"
@@ -57,8 +67,8 @@
         </nav>
         <section class="middle">
             <div class="form">
-                <h2>Login</h2>
-                <h3>Entre com suas credenciais</h3>
+                <h2>Registrar</h2>
+                <h3>Registre uma nova conta</h3>
                 <hr />
                 <label for="name">Login</label>
                 <div>
@@ -92,8 +102,17 @@
                     <p id="password-error" class="hidden"></p>
                 </div>
                 <p id="validation-error" class="hidden"></p>
+                <label for="perms">Nivel de Permissão</label>
+                <select id="perms">
+                    <option value="999">
+                        Admin (pode criar outras contas)
+                    </option>
+                    <option value="100">Editor</option>
+                </select>
                 <div class="middle">
-                    <button class="main" onclick="onLogin()">Login</button>
+                    <button class="main" onclick="onRegister()">
+                        Registrar
+                    </button>
                 </div>
             </div>
         </section>

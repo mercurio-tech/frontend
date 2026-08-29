@@ -1,10 +1,15 @@
 const apiURL = "http://localhost:3000";
 function createAdmin(username, password, perms) {
-    return {username: username, password: password, permission: perms}
+    return { username: username, password: password, permission: perms };
 }
 
 function parseAdminAPIObject(admin) {
-    return {id: admin.id, name: admin.nome, password: admin.senha, permission: admin.permissao}
+    return {
+        id: admin.id,
+        name: admin.nome,
+        password: admin.senha,
+        permission: admin.permissao,
+    };
 }
 
 async function get(url) {
@@ -16,9 +21,9 @@ async function post(url, data) {
     const response = await fetch(`${apiURL}/${url}`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
     });
     return await response.json();
 }
@@ -32,7 +37,9 @@ function checkError(res) {
 }
 
 async function getAuthRequest(name, password) {
-    const result = await post(`isAdmin/`, { auth: {username: name, password: password} });
+    const result = await post(`isAdmin/`, {
+        auth: { username: name, password: password },
+    });
     return result.result.message;
 }
 
@@ -41,7 +48,7 @@ async function getProjectsRequest() {
 }
 
 async function getProjectsRequest(page) {
-    const result = await (await get(`getProjects/${page}`)).json()
+    const result = await (await get(`getProjects/${page}`)).json();
     if (checkError) {
         return null;
     }
@@ -49,38 +56,42 @@ async function getProjectsRequest(page) {
 }
 
 async function getDetailedProjectRequest(id) {
-    const result = await get(`getProjectDetails/${id}`)
+    const result = await get(`getProjectDetails/${id}`);
     if (checkError(result)) {
         return null;
     }
     return result.result;
 }
 
+async function isAdminPresent() {
+    return await get("isAdminPresent/").result;
+}
+
 async function registerAdmin(admin) {
-    const login = localStorage.getItem("login");
-    const password = localStorage.getItem("password");
+    const login = localStorage.getItem("nome");
+    const password = localStorage.getItem("senha");
     let result;
     console.log({
-            auth: {
-                username: login,
-                password: password,
-            },
-            ...admin
-        })
+        auth: {
+            username: login,
+            password: password,
+        },
+        ...admin,
+    });
     if (login && password) {
         result = await post("registerAdmin/", {
             auth: {
                 username: login,
                 password: password,
             },
-            ...admin
-        })
+            ...admin,
+        });
     } else {
         result = await post("registerAdmin/", {
-            ...admin
-        })
+            ...admin,
+        });
     }
-    return !result.error;
+    return [!result.error, result.result];
 }
 
 async function registerProject(project) {

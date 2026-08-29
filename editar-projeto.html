@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8" />
@@ -35,13 +35,23 @@
             </div>
             <div class="links">
                 <a href="index.html">Início</a>
-                <a href="cadastro-projeto.html" id="cadastro-projeto" class="hidden">Cadastro de Projeto</a>
+                <a
+                    href="cadastro-projeto.html"
+                    id="cadastro-projeto"
+                    class="hidden"
+                    >Cadastro de Projeto</a
+                >
                 <a href="sobre.html">Sobre</a>
             </div>
 
             <div class="signIn">
+                <a href="registrar.html" id="register" class="hidden"
+                    ><i class="bx bx-user"></i>Registrar conta</a
+                >
                 <button id="logout" class="hidden">Sair da conta</button>
-                <a href="login.html" id="login" class="hidden"><i class="bx bx-user"></i>Entrar como avaliador</a>
+                <a href="login.html" id="login" class="hidden"
+                    ><i class="bx bx-user"></i>Entrar como avaliador</a
+                >
             </div>
         </nav>
         <section class="middle">
@@ -106,7 +116,12 @@
                 <label for="dropZoneImage">Imagem do Projeto</label>
                 <p id="currentImageLabel" class="current-file-info hidden">
                     Imagem atual:
-                    <img id="currentImageThumb" class="current-image-thumb" src="" alt="Imagem atual do projeto">
+                    <img
+                        id="currentImageThumb"
+                        class="current-image-thumb"
+                        src=""
+                        alt="Imagem atual do projeto"
+                    />
                 </p>
                 <div class="drop-zone" id="dropZoneImage">
                     <input
@@ -121,7 +136,8 @@
                             Clique para fazer upload ou arraste o arquivo
                         </p>
                         <p class="drop-zone-hint">
-                            Suporta PNG, JPG e JPEG (Tamanho Máximo: 10MB) — Deixe em branco para manter a imagem atual
+                            Suporta PNG, JPG e JPEG (Tamanho Máximo: 10MB) —
+                            Deixe em branco para manter a imagem atual
                         </p>
                     </div>
 
@@ -129,7 +145,14 @@
                 </div>
                 <label for="dropZonePDF">PDF do projeto</label>
                 <p id="currentPdfLabel" class="current-file-info hidden">
-                    PDF atual: <a id="currentPdfLink" href="#" target="_blank" rel="noopener">ver arquivo</a>
+                    PDF atual:
+                    <a
+                        id="currentPdfLink"
+                        href="#"
+                        target="_blank"
+                        rel="noopener"
+                        >ver arquivo</a
+                    >
                 </p>
                 <div class="drop-zone" id="dropZonePDF">
                     <input
@@ -144,15 +167,20 @@
                             Clique para fazer upload ou arraste o arquivo
                         </p>
                         <p class="drop-zone-hint">
-                            Suporta PDF (Tamanho Máximo: 50MB) — Deixe em branco para manter o PDF atual
+                            Suporta PDF (Tamanho Máximo: 50MB) — Deixe em branco
+                            para manter o PDF atual
                         </p>
                     </div>
 
                     <div class="file-list" id="fileListPDF"></div>
-             </div>
+                </div>
                 <div class="right action-button-div">
-                    <a id="btnCancelar" href="index.html"><button type="button">Cancelar</button></a>
-                    <button type="button" class="main" id="btnSalvar">Salvar Alterações</button>
+                    <a id="btnCancelar" href="index.html"
+                        ><button type="button">Cancelar</button></a
+                    >
+                    <button type="button" class="main" id="btnSalvar">
+                        Salvar Alterações
+                    </button>
                 </div>
             </div>
         </section>

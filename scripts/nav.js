@@ -5,6 +5,7 @@ function hideLogin() {
 function hideLogOut() {
     document.getElementById("logout").classList.add("hidden");
     document.getElementById("cadastro-projeto").classList.add("hidden");
+    document.getElementById("register").classList.add("hidden");
 }
 
 function showLogin() {
@@ -13,22 +14,26 @@ function showLogin() {
 function showLogOut() {
     document.getElementById("logout").classList.remove("hidden");
     document.getElementById("cadastro-projeto").classList.remove("hidden");
+    document.getElementById("register").classList.remove("hidden");
 }
 document.addEventListener("DOMContentLoaded", async () => {
-    hideLogOut()
+    hideLogOut();
     const val = await checkAuth();
-    console.log(val)
+    console.log(val);
     if (val) {
-        hideLogin()
-        showLogOut()
+        hideLogin();
+        showLogOut();
     } else {
-        showLogin()
+        showLogin();
+        if (!(await isAdminPresent())) {
+            document.getElementById("register").classList.remove("hidden");
+        }
     }
 
     document.getElementById("logout").addEventListener("click", () => {
         localStorage.removeItem("nome");
         localStorage.removeItem("senha");
-        hideLogOut()
-        showLogin()
-    })
-})
+        hideLogOut();
+        showLogin();
+    });
+});
