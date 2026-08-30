@@ -41,7 +41,7 @@ input,
 textarea,
 select {
     background-color: #ffffff;
-    border: 1px solid #E2E8F0;
+    border: 1px solid #e2e8f0;
     border-width: 1px;
     border-radius: 0.35rem;
     margin-bottom: 1rem;
@@ -55,7 +55,7 @@ input:focus {
 
 button:not(.show-password) {
     background-color: white;
-    border-color: #e2e8f0;  
+    border-color: #e2e8f0;
     border-width: 1px;
     padding: 0.5rem;
     border-radius: 0.5rem;
@@ -73,7 +73,9 @@ button.show-password {
 #toggle-password-visibility {
     padding: 0.25rem;
 }
-#password-error, #name-error, #validation-error {
+#password-error,
+#name-error,
+#validation-error {
     color: red;
     font-size: 0.8rem;
     margin-bottom: 1.5rem;
@@ -82,7 +84,7 @@ button:not(.show-password):hover {
     background-color: #f0f0f0;
 }
 
-button:not(.show-password)active {
+button:not(.show-password):active {
     background-color: #e0e0e0;
 }
 

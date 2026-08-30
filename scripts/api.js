@@ -91,13 +91,9 @@ async function getAuthRequest(name, password) {
     return result.result.message;
 }
 
-async function getProjectsRequest() {
-    return await getProjectsRequest(1);
-}
-
 async function getProjectsRequest(page) {
-    const result = await (await get(`getProjects/${page}`)).json();
-    if (checkError) {
+    const result = await get(`getProjects/${page || 1}`);
+    if (checkError(result)) {
         return null;
     }
     return result.result;

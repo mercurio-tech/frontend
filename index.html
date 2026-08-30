@@ -1,213 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
-    <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
-    <title>Início - Colégio Mercúrio</title>
-    <script src="scripts/api.js"></script>
-    <script src="scripts/auth.js"></script>
-    <script src="scripts/nav.js"></script>
-</head>
-<body>
-    <nav>
-        <div class="logo">
-            <img class="logoImg" src="assets/images/logo.png">
-            <div class="logoTexts">
-                <h2>Colégio Mercúrio</h2>
-                <h3>Semana de Iniciação Científica</h3>
-            </div>
-        </div>
-        <div class="links">
-            <a href="index.html">Início</a>
-            <a href="cadastro-projeto.html" id="cadastro-projeto" class="hidden">Cadastro de Projeto</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
-
-        <div class="signIn">
-            <a href="registrar.html" id="register" class="hidden"><i class="bx bx-user"></i>Registrar conta</a>
-            <button id="logout" class="hidden">Sair da conta</button>
-            <a href="login.html" id="login" class="hidden"><i class="bx bx-user"></i>Entrar como avaliador</a>
-        </div>
-    </nav>
-
-    <header>
-        <div class="left">
-            <div class="badge">
-                <h2>EDIÇÃO 2026 ABERTA PARA CONSULTA</h2>
-            </div>
-            <h1>Semana de Iniciação Científica (SIC)</h1>
-            <h3>Explore os projetos científicos inovadores e soluções sustentáveis desenvolvidos pelos estudantes do Colégio Mercúrio.</h3>
-        </div>
-    </header>
-
-    <section class="main-section">
-        <div class="row">
-            <div class="searchBar">
-                <i class="bx bx-search"></i>
-                <input type="text" placeholder="Pesquisar">
-            </div>
-            <div id="tipos_pesquisa" class="self-center">
-                <button type="submit">Procurar</button>
-                <select name="" id="">
-                    <option value="">Alunos</option>
-                    <option value="">Nome do Projeto</option>
-                </select>tipo de pesquisa
-            </div>
-        </div>
-        <div class="filters">
-            <p class="filters-title">Filtros</p>
-            <div class="content">
-                <select name="materia" id="materia">
-                    <option value="">
-                    TAG
-                    </option>
-                    <option value="">
-                        Português
-                    </option>
-                    <option value="">
-                        Matemática
-                    </option>
-                    <option value="">
-                        Geografia
-                    </option>
-                </select>
-            
-                <select name="materia" id="materia">
-                    <option value="">
-                    Professor(a)
-                    </option>
-                    <option value="">
-                        Fabiano
-                    </option>
-                    <option value="">
-                        Flávio
-                    </option>
-                    <option value="">
-                        José
-                    </option>
-                </select>
-                
-                <select name="materia" id="materia">
-                    <option value="">
-                        Ano
-                    </option>
-                    <option value="">
-                        2026
-                    </option>
-                    <option value="">
-                        2025
-                    </option>
-                    <option value="">
-                        2024
-                    </option>
-                </select>
-                <button type="submit">Filtrar</button>
-            </div>
-        </div>
-        <section class="projects">
-            <a href="projeto.html">
-                <div class="project-container">
-                    <img src="assets/images/lab.jpg" alt="">
-                    <div class="badge-container">
-                        <h3 class="badge">Tecnologia</h3>
-                        <h3 class="data">Ano:</h3>
-                    
-                    </div>
-                    
-                    <div class="text-container">
-                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                        <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cupiditate pariatur ipsa. Voluptates autem aspernatur, distinctio explicabo laudantium</h2>
-                    </div>
-                    <div class="members-container">
-                        <p>INTEGRANTES: SLA, SLA, SLA</p>
-                    </div>
-            </a>
-                <a href="editar-projeto.html?id=1" class="edit-btn" title="Editar projeto">
-                    <i class="bx bx-edit"></i> EDITAR
-                </a>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <link
+            href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css"
+            rel="stylesheet"
+        />
+        <title>Início - Colégio Mercúrio</title>
+        <script src="scripts/api.js"></script>
+        <script src="scripts/auth.js"></script>
+        <script src="scripts/projeto-card.js"></script>
+        <script src="scripts/index.js"></script>
+        <script src="scripts/nav.js"></script>
+    </head>
+    <body>
+        <nav>
+            <div class="logo">
+                <img class="logoImg" src="assets/images/logo.png" />
+                <div class="logoTexts">
+                    <h2>Colégio Mercúrio</h2>
+                    <h3>Semana de Iniciação Científica</h3>
                 </div>
-           
-            <div class="project-container">
-                <a href="projeto.html">
-                    <img src="assets/images/lab.jpg" alt="">
-                    <div class="badge-container">
-                        <h3 class="badge">Tecnologia</h3>
-                        <h3 class="data">Ano:</h3>
-                    </div>
-                    <div class="text-container">
-                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                        <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cupiditate pariatur ipsa. Voluptates autem aspernatur, distinctio explicabo laudantium</h2>
-                    </div>
-                    <div class="members-container">
-                        <p>INTEGRANTES: SLA, SLA, SLA</p>
-                    </div>
-                </a>
-                <a href="editar-projeto.html?id=1" class="edit-btn" title="Editar projeto">
-                        <i class="bx bx-edit"></i> EDITAR
-                </a>
             </div>
-            <div class="project-container">
-                <a href="projeto.html">
-                    <img src="assets/images/lab.jpg" alt="">
-                    <div class="badge-container">
-                        <h3 class="badge">Tecnologia</h3>
-                        <h3 class="data">Ano:</h3>
-                    </div>
-                    <div class="text-container">
-                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                        <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cupiditate pariatur ipsa. Voluptates autem aspernatur, distinctio explicabo laudantium</h2>
-                    </div>
-                    <div class="members-container">
-                        <p>INTEGRANTES: SLA, SLA, SLA</p>
-                    </div>
-                </a>
-                <a href="editar-projeto.html?id=1" class="edit-btn" title="Editar projeto">
-                    <i class="bx bx-edit"></i> EDITAR
-                </a>
+            <div class="links">
+                <a href="index.html">Início</a>
+                <a
+                    href="cadastro-projeto.html"
+                    id="cadastro-projeto"
+                    class="hidden"
+                    >Cadastro de Projeto</a
+                >
+                <a href="sobre.html">Sobre</a>
             </div>
-            <div class="project-container">
-                <a href="projeto.html">
-                    <img src="assets/images/lab.jpg" alt="">
-                    <div class="badge-container">
-                        <h3 class="badge">Tecnologia</h3>
-                        <h3 class="data">Ano:</h3>
-                    </div>
-                    <div class="text-container">
-                        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                        <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cupiditate pariatur ipsa. Voluptates autem aspernatur, distinctio explicabo laudantium</h2>
-                    </div>
-                    <div class="members-container">
-                        <p>INTEGRANTES: SLA, SLA, SLA</p>
-                    </div>
-                </a>
-                <a href="editar-projeto.html?id=1" class="edit-btn" title="Editar projeto">
-                        <i class="bx bx-edit"></i> EDITAR
-                </a>
+
+            <div class="signIn">
+                <a href="registrar.html" id="register" class="hidden"
+                    ><i class="bx bx-user"></i>Registrar conta</a
+                >
+                <button id="logout" class="hidden">Sair da conta</button>
+                <a href="login.html" id="login" class="hidden"
+                    ><i class="bx bx-user"></i>Entrar como avaliador</a
+                >
             </div>
+        </nav>
+
+        <header>
+            <div class="left">
+                <div class="badge">
+                    <h2>EDIÇÃO 2026 ABERTA PARA CONSULTA</h2>
+                </div>
+                <h1>Semana de Iniciação Científica (SIC)</h1>
+                <h3>
+                    Explore os projetos científicos inovadores e soluções
+                    sustentáveis desenvolvidos pelos estudantes do Colégio
+                    Mercúrio.
+                </h3>
+            </div>
+        </header>
+
+        <section class="main-section">
+            <div class="row">
+                <div class="searchBar">
+                    <i class="bx bx-search"></i>
+                    <input type="text" placeholder="Pesquisar" />
+                </div>
+                <div id="tipos_pesquisa" class="self-center">
+                    <button type="submit">Procurar</button>
+                    <select name="" id="">
+                        <option value="">Alunos</option>
+                        <option value="">Nome do Projeto</option></select
+                    >tipo de pesquisa
+                </div>
+            </div>
+            <div class="filters">
+                <p class="filters-title">Filtros</p>
+                <div class="content">
+                    <select name="materia" id="materia">
+                        <option value="">TAG</option>
+                        <option value="">Português</option>
+                        <option value="">Matemática</option>
+                        <option value="">Geografia</option>
+                    </select>
+
+                    <select name="materia" id="materia">
+                        <option value="">Professor(a)</option>
+                        <option value="">Fabiano</option>
+                        <option value="">Flávio</option>
+                        <option value="">José</option>
+                    </select>
+
+                    <select name="materia" id="materia">
+                        <option value="">Ano</option>
+                        <option value="">2026</option>
+                        <option value="">2025</option>
+                        <option value="">2024</option>
+                    </select>
+                    <button type="submit">Filtrar</button>
+                </div>
+            </div>
+            <section class="projects" id="projects"></section>
         </section>
-    </section>
-    <footer>
-    <div class="footer-content">
-      <div class="footer-info">
-        <h3>Colégio Mercúrio — SIC</h3>
-        <p>Estimulando a curiosidade, a pesquisa científica e o desenvolvimento de soluções inovadoras para o futuro da nossa sociedade.</p>
-      </div>
-      <div class="footer-nav">
-        <h4>Navegação</h4>
-        <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Colégio Mercúrio. Semana de Iniciação Científica (SIC). Todos os direitos reservados.</p>
-      <p>Desenvolvido para fins educacionais.</p>
-    </div>
-  </footer>
-</body>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Colégio Mercúrio — SIC</h3>
+                    <p>
+                        Estimulando a curiosidade, a pesquisa científica e o
+                        desenvolvimento de soluções inovadoras para o futuro da
+                        nossa sociedade.
+                    </p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 Colégio Mercúrio. Semana de Iniciação Científica
+                    (SIC). Todos os direitos reservados.
+                </p>
+                <p>Desenvolvido para fins educacionais.</p>
+            </div>
+        </footer>
+    </body>
 </html>
