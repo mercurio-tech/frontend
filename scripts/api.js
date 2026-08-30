@@ -1,6 +1,50 @@
 const apiURL = "http://localhost:3000";
+
+function createAuth() {
+    return {
+        username: localStorage.getItem("nome"),
+        password: localStorage.getItem("senha"),
+    };
+}
+
 function createAdmin(username, password, perms) {
     return { username: username, password: password, permission: perms };
+}
+
+function createProject(
+    id,
+    title,
+    subtitle,
+    desc,
+    student,
+    prof,
+    type,
+    year,
+    tags,
+) {
+    if (id === null) {
+        return {
+            titulo: title,
+            subtitulo: subtitle,
+            descricao: desc,
+            aluno: student,
+            professor: prof,
+            tipo: type,
+            ano: Number(year),
+            tags: tags,
+        };
+    }
+    return {
+        id: id,
+        titulo: title,
+        subtitulo: subtitle,
+        descricao: desc,
+        aluno: student,
+        professor: prof,
+        tipo: type,
+        ano: Number(year),
+        tags: tags,
+    };
 }
 
 function parseAdminAPIObject(admin) {
@@ -29,7 +73,11 @@ async function post(url, data) {
 }
 
 async function postForm(url, data) {
-    // to-do
+    const response = await fetch(`${apiURL}/${url}`, {
+        method: "POST",
+        body: data,
+    });
+    return await response.json();
 }
 
 function checkError(res) {
@@ -64,7 +112,7 @@ async function getDetailedProjectRequest(id) {
 }
 
 async function isAdminPresent() {
-    return await get("isAdminPresent/").result;
+    return (await get("isAdminPresent/")).result;
 }
 
 async function registerAdmin(admin) {
@@ -94,8 +142,8 @@ async function registerAdmin(admin) {
     return [!result.error, result.result];
 }
 
-async function registerProject(project) {
-    // to-do
+async function registerProject(form) {
+    return postForm("createProject/", form);
 }
 
 async function updateProject(id, project) {

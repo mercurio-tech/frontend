@@ -18,9 +18,7 @@ function showLogOut() {
 }
 document.addEventListener("DOMContentLoaded", async () => {
     hideLogOut();
-    const val = await checkAuth();
-    console.log(val);
-    if (val) {
+    if (await checkAuth()) {
         hideLogin();
         showLogOut();
     } else {
