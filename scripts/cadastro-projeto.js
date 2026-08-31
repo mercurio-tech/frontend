@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fileList.appendChild(fileItem);
     }
 
-    document.getElementById("submit").addEventListener("click", async () => {
+    document.getElementById("submit")?.addEventListener("click", async () => {
         const title = document.getElementById("title").value;
         const subtitle = document.getElementById("subtitle").value;
         const tagsRaw = document.getElementById("tags").value;
@@ -169,5 +169,42 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         registerProject(formData);
+    });
+
+    document.getElementById("btnSalvar")?.addEventListener("click", async () => {
+        const title = document.getElementById("title").value;
+        const subtitle = document.getElementById("subtitle").value;
+        const tagsRaw = document.getElementById("tags").value;
+        const type = document.getElementById("type").value;
+        const desc = document.getElementById("description").value;
+        const prof = document.getElementById("professor").value;
+        const year = document.getElementById("year").value;
+        const authors = document.getElementById("authors").value;
+        const image = document.getElementById("fileInputImage").files[0];
+        const pdf = document.getElementById("fileInputPDF").files[0];
+        const formData = new FormData();
+        formData.append("image", image);
+        formData.append("pdf", pdf);
+        formData.append("auth", JSON.stringify(createAuth()));
+
+        const tags = tagsRaw.split(",").map((tag) => tag.trim());
+        formData.append(
+            "project",
+            JSON.stringify(
+                createProject(
+                    null,
+                    title,
+                    subtitle,
+                    desc,
+                    authors,
+                    prof,
+                    type,
+                    year,
+                    tags,
+                ),
+            ),
+        );
+
+        editProject(formData);
     });
 });

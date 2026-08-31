@@ -142,6 +142,10 @@ async function registerProject(form) {
     return postForm("createProject/", form);
 }
 
+async function editProject(form) {
+    return postForm("editProject/", form);
+}
+
 async function updateProject(id, project) {
     return await post(`updateProject/${id}`, {
         auth: {

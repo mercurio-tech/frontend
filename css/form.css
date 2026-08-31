@@ -53,6 +53,13 @@ input:focus {
     border: 1px solid #c8ccd3;
 }
 
+.recomendacao {
+    margin-left: 0.4rem;
+    margin-bottom: 1.4rem;
+    font-weight: 200;
+    font-size: 0.8rem;;
+}
+
 button:not(.show-password) {
     background-color: white;
     border-color: #e2e8f0;
