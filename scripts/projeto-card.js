@@ -38,14 +38,23 @@ function renderProjectCard(project, showEditButton) {
     main.appendChild(subtitleContainer);
     main.appendChild(membersContainer);
     if (showEditButton) {
-        const button = document.createElement("a");
-        button.classList.add("edit-btn");
-        button.href = `editar-projeto.html?id=${id}`;
+        const edit = document.createElement("a");
+        edit.classList.add("edit-btn");
+        edit.href = `editar-projeto.html?id=${id}`;
         const icon = document.createElement("i");
         icon.classList.add(["bx", "bx-edit"]);
-        button.appendChild(icon);
-        button.innerText = " EDITAR";
-        main.appendChild(button);
+        edit.appendChild(icon);
+        edit.innerText = " EDITAR";
+        const deleteBtn = document.createElement("button");
+        deleteBtn.classList.add("delete-btn")
+        deleteBtn.addEventListener("click", () => {
+            deleteProject(id)
+        })
+        const trash = document.createElement("i");
+        trash.classList.add(["bx", "bx-trash"]);
+        deleteBtn.appendChild(trash)
+        main.appendChild(deleteBtn)
+        main.appendChild(edit);
     }
 
     div.appendChild(main);

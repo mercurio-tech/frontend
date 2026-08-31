@@ -217,3 +217,32 @@ button[type="submit"] {
 .edit-btn i {
     font-size: 1rem;
 }
+
+.delete-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 100px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background-color: red;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #003d82;
+    transform: translateY(-2px);
+}
+
+.delete-btn i {
+    font-size: 1rem;
+}

@@ -22,8 +22,9 @@ function createProject(
     year,
     tags,
 ) {
-    if (id === null) {
+    if (id) {
         return {
+            id: Number(id),
             titulo: title,
             subtitulo: subtitle,
             descricao: desc,
@@ -34,8 +35,8 @@ function createProject(
             tags: tags,
         };
     }
+    
     return {
-        id: id,
         titulo: title,
         subtitulo: subtitle,
         descricao: desc,
@@ -143,15 +144,12 @@ async function registerProject(form) {
 }
 
 async function editProject(form) {
-    return postForm("editProject/", form);
+    return postForm("updateProject/", form);
 }
 
-async function updateProject(id, project) {
-    return await post(`updateProject/${id}`, {
-        auth: {
-            username: localStorage.getItem("nome"),
-            password: localStorage.getItem("senha"),
-        },
-        project: project,
-    });
+async function deleteProject(id) {
+    return post("deleteProject/", {
+        auth: createAuth(),
+        id: id
+    })
 }

@@ -15,25 +15,19 @@ function hideStatus() {
 function fillForm(project) {
     document.getElementById("title").value = project.titulo;
     document.getElementById("subtitle").value = project.subtitulo;
+    document.getElementById("description").value = project.descricao;
     document.getElementById("tags").value = project.tags.join(", ");
     document.getElementById("type").value = project.tipo;
     document.getElementById("professor").value = project.professor;
     document.getElementById("year").value = project.ano;
     document.getElementById("authors").value = project.aluno;
-    if (project.imagem) {
-        document.getElementById("currentImageThumb").src = project.imagem;
-        document.getElementById("currentImageLabel").classList.remove("hidden");
-    }
-    if (project.pdf) {
-        document.getElementById("currentPdfLink").href = project.pdf;
-        document.getElementById("currentPdfLabel").classList.remove("hidden");
-    }
 }
 
-function readForm(project) {
+function readForm() {
     return {
         titulo: document.getElementById("title").value,
         subtitulo: document.getElementById("subtitle").value,
+        descricao: docuument.getElementById("description").value,
         aluno: document.getElementById("authors").value,
         professor: document.getElementById("professor").value,
         tipo: document.getElementById("type").value,
@@ -43,8 +37,6 @@ function readForm(project) {
             .value.split(",")
             .map((tag) => tag.trim())
             .filter((tag) => tag.length > 0),
-        imagem: project.imagem,
-        pdf: project.pdf,
     };
 }
 
@@ -70,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     fillForm(project);
     hideStatus();
-    btnSalvar.addEventListener("click", async () => {
+    /*btnSalvar.addEventListener("click", async () => {
         btnSalvar.disabled = true;
         setStatus("Salvando alterações...", "info");
         let result;
@@ -85,5 +77,5 @@ document.addEventListener("DOMContentLoaded", async () => {
             setStatus("Projeto atualizado com sucesso.", "sucesso");
         }
         btnSalvar.disabled = false;
-    });
+    });*/
 });
