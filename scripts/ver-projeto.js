@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("project-description").innerText =
             project.subtitulo;
         const nameContainer = document.getElementById("names");
-        project.aluno.split(",").forEach((alunoRaw) => {
+        project.aluno.split(new RegExp(",|;")).forEach((alunoRaw) => {
             const aluno = alunoRaw.trim();
             const personContainer = document.createElement("div");
             personContainer.classList.add("person-item");

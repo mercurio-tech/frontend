@@ -45,15 +45,17 @@ function renderProjectCard(project, showEditButton) {
         icon.classList.add(["bx", "bx-edit"]);
         edit.appendChild(icon);
         edit.innerText = " EDITAR";
-        const deleteBtn = document.createElement("button");
-        deleteBtn.classList.add("delete-btn")
+        const deleteBtn = document.createElement("a");
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.href = "#";
         deleteBtn.addEventListener("click", () => {
-            deleteProject(id)
-        })
+            deleteProject(id);
+        });
         const trash = document.createElement("i");
-        trash.classList.add(["bx", "bx-trash"]);
-        deleteBtn.appendChild(trash)
-        main.appendChild(deleteBtn)
+        trash.classList.add("bx");
+        trash.classList.add("bx-trash");
+        deleteBtn.appendChild(trash);
+        main.appendChild(deleteBtn);
         main.appendChild(edit);
     }
 

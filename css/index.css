@@ -126,7 +126,7 @@ button[type="submit"] {
     position: relative;
     background-color: #fff;
     width: 24.625rem;
-    height: 26.875rem;
+    min-height: 26.875rem;
     margin-right: 3rem;
     margin-top: 32px;
     border-radius: 20px;
@@ -165,12 +165,14 @@ button[type="submit"] {
 .members-container {
     padding: 0 20px 0 20px;
     margin-top: 20px;
+    max-width: 280px;
 }
 
 .badge-container {
     display: flex;
     padding: 10px 20px 10px 20px;
     gap: 0.8rem;
+    flex-wrap: wrap;
 }
 
 .badge-container .badge {
@@ -190,6 +192,7 @@ button[type="submit"] {
     font-weight: 500;
 }
 .edit-btn {
+    min-height: 32px;
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -226,23 +229,24 @@ button[type="submit"] {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 6px 14px;
+    padding: 6px 10px;
     background-color: red;
     color: #ffffff;
     font-size: 0.8rem;
     font-weight: 600;
     text-decoration: none;
     border-radius: 6px;
+    cursor: pointer;
     transition:
         background-color 0.3s ease,
         transform 0.2s ease;
 }
 
 .delete-btn:hover {
-    background-color: #003d82;
+    background-color: rgb(162, 0, 0);
     transform: translateY(-2px);
 }
 
 .delete-btn i {
-    font-size: 1rem;
+    font-size: 1.25rem;
 }

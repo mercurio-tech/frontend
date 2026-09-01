@@ -1,5 +1,26 @@
 const apiURL = "http://localhost:3000";
 
+function getCachedVal(key, ttl = 1000 * 60 * 5) {
+    const cache = JSON.parse(localStorage.getItem("cache"));
+    if (cache && cache[key]) {
+        const val = cache[key];
+        // 5 mins
+        if (val.lastChecked && val.lastChecked + ttl > Date.now()) {
+            return val.value;
+        }
+    }
+    return;
+}
+
+function setCachedVal(key, value) {
+    const cache = JSON.parse(localStorage.getItem("cache")) || {};
+    cache[key] = {
+        value: value,
+        lastChecked: Date.now(),
+    };
+    localStorage.setItem("cache", JSON.stringify(cache));
+}
+
 function createAuth() {
     return {
         username: localStorage.getItem("nome"),
@@ -35,7 +56,7 @@ function createProject(
             tags: tags,
         };
     }
-    
+
     return {
         titulo: title,
         subtitulo: subtitle,
@@ -86,30 +107,45 @@ function checkError(res) {
 }
 
 async function getAuthRequest(name, password) {
+    const cached = getCachedVal(`projects_${page || 1}`, 1000 * 60);
+    if (cached) return cached;
     const result = await post(`isAdmin/`, {
         auth: { username: name, password: password },
     });
+    setCachedVal(`projects_${page || 1}`, result.result.message);
     return result.result.message;
 }
 
 async function getProjectsRequest(page) {
+    const cached = getCachedVal(`projects_${page || 1}`, 1000 * 60);
+    if (cached) return cached;
     const result = await get(`getProjects/${page || 1}`);
     if (checkError(result)) {
+        setCachedVal(`projects_${page || 1}`, null);
         return null;
     }
+    setCachedVal(`projects_${page || 1}`, result.result);
     return result.result;
 }
 
 async function getDetailedProjectRequest(id) {
+    const cached = getCachedVal(`project_${id}`);
+    if (cached) return cached;
     const result = await get(`getProjectDetails/${id}`);
     if (checkError(result)) {
+        setCachedVal(`project_${id}`, null);
         return null;
     }
+    setCachedVal(`project_${id}`, result.result);
     return result.result;
 }
 
 async function isAdminPresent() {
-    return (await get("isAdminPresent/")).result;
+    const cached = getCachedVal("isAdminPresent");
+    if (cached) return cached;
+    const res = (await get("isAdminPresent/")).result;
+    setCachedVal("isAdminPresent", res);
+    return res;
 }
 
 async function registerAdmin(admin) {
@@ -150,6 +186,6 @@ async function editProject(form) {
 async function deleteProject(id) {
     return post("deleteProject/", {
         auth: createAuth(),
-        id: id
-    })
+        id: id,
+    });
 }
