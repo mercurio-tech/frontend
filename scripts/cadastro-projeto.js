@@ -169,7 +169,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 ),
             );
 
-            registerProject(formData);
+            await registerProject(formData);
+            document.getElementById("dialog").showModal()    
         });
     }
 
@@ -215,6 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             await editProject(formData);
+            document.getElementById("dialog").showModal()    
         });
     }
 });

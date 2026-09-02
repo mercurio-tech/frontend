@@ -49,9 +49,9 @@ function renderProjectCard(project, showEditButton) {
         const deleteBtn = document.createElement("a");
         deleteBtn.classList.add("delete-btn");
         deleteBtn.href = `#project-${id}`;
-        deleteBtn.addEventListener("click", () => {
-            deleteProject(id);
-            rerender(true);
+        deleteBtn.addEventListener("click", async () => {
+            await deleteProject(id);
+            await rerender(1, true);
         });
         const trash = document.createElement("i");
         trash.classList.add("bx");

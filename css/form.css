@@ -53,6 +53,24 @@ input:focus {
     border: 1px solid #c8ccd3;
 }
 
+.dialog-body {
+    background-color: white;
+    border: 1px solid #c8ccd3;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.dialog-body button {
+    background-color: #0b2545 !important;
+    border: solid 2px #0b2545 !important;
+    border-radius: 8px;
+    color: white;
+}
+
+.dialog-body h3 {
+    margin-bottom: 1rem;
+}
+
 .recomendacao {
     margin-left: 0.4rem;
     margin-bottom: 1.4rem;
