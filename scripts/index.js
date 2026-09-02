@@ -62,9 +62,19 @@ async function rerender(page, force, filters) {
     }
 }
 
+let showingFilters = false;
 document.addEventListener("DOMContentLoaded", async () => {
     auth = await checkAuth();
     rerender();
+    document.getElementById("filter-show").addEventListener("click", () => {
+        showingFilters = !showingFilters;
+        if (showingFilters) {
+            document.getElementById("filters").classList.remove("hidden2")
+        } else {
+            document.getElementById("filters").classList.add("hidden2")
+        }
+    })
+
     document.getElementById("filter-btn").addEventListener("click", () => {
         let tags = document.getElementById("tags").value;
         let profs = document.getElementById("profs").value;
