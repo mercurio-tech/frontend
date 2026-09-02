@@ -10,6 +10,7 @@ function renderProjectCard(project, showEditButton) {
 
     const main = document.createElement("a");
     main.href = `projeto.html?id=${id}`;
+    main.id = `project-${id}`;
     const img = document.createElement("img");
     img.src = `${apiURL}/files/imagens/${id}/imagem.${extension}`;
     const tagContainer = document.createElement("div");
@@ -47,9 +48,10 @@ function renderProjectCard(project, showEditButton) {
         edit.innerText = " EDITAR";
         const deleteBtn = document.createElement("a");
         deleteBtn.classList.add("delete-btn");
-        deleteBtn.href = "#";
+        deleteBtn.href = `#project-${id}`;
         deleteBtn.addEventListener("click", () => {
             deleteProject(id);
+            rerender(true);
         });
         const trash = document.createElement("i");
         trash.classList.add("bx");

@@ -1,11 +1,16 @@
 const apiURL = "http://localhost:3000";
-
+const disableCache = true;
 function getCachedVal(key, ttl = 1000 * 60 * 5) {
+    if (disableCache) return;
     const cache = JSON.parse(localStorage.getItem("cache"));
     if (cache && cache[key]) {
         const val = cache[key];
         // 5 mins
-        if (val.lastChecked && val.lastChecked + ttl > Date.now()) {
+        if (
+            val.lastChecked &&
+            val.lastChecked + ttl > Date.now() &&
+            val.invalid === false
+        ) {
             return val.value;
         }
     }
@@ -13,12 +18,23 @@ function getCachedVal(key, ttl = 1000 * 60 * 5) {
 }
 
 function setCachedVal(key, value) {
+    if (disableCache) return;
     const cache = JSON.parse(localStorage.getItem("cache")) || {};
     cache[key] = {
         value: value,
         lastChecked: Date.now(),
+        invalid: false,
     };
     localStorage.setItem("cache", JSON.stringify(cache));
+}
+
+function invalidateVal(key) {
+    if (disableCache) return;
+    const cache = JSON.parse(localStorage.getItem("cache")) || {};
+    if (cache[key]) {
+        cache[key].invalid = true;
+        localStorage.setItem("cache", JSON.stringify(cache));
+    }
 }
 
 function createAuth() {
@@ -107,24 +123,34 @@ function checkError(res) {
 }
 
 async function getAuthRequest(name, password) {
-    const cached = getCachedVal(`projects_${page || 1}`, 1000 * 60);
+    const cached = getCachedVal("isAdmin");
     if (cached) return cached;
     const result = await post(`isAdmin/`, {
         auth: { username: name, password: password },
     });
-    setCachedVal(`projects_${page || 1}`, result.result.message);
+    setCachedVal("isAdmin", result.result.message);
     return result.result.message;
 }
 
-async function getProjectsRequest(page) {
+async function getProjectsRequest(page, force) {
     const cached = getCachedVal(`projects_${page || 1}`, 1000 * 60);
-    if (cached) return cached;
+    if (cached && !force) return cached;
     const result = await get(`getProjects/${page || 1}`);
     if (checkError(result)) {
         setCachedVal(`projects_${page || 1}`, null);
         return null;
     }
     setCachedVal(`projects_${page || 1}`, result.result);
+    return result.result;
+}
+
+async function getFilteredProjects(page, filter) {
+    const result = await get(
+        `getProjects/${page || 1}/${filter.year}/${filter.tags}/${filter.professor}`,
+    );
+    if (checkError(result)) {
+        return null;
+    }
     return result.result;
 }
 
@@ -184,6 +210,7 @@ async function editProject(form) {
 }
 
 async function deleteProject(id) {
+    invalidateVal(`project_${id}`);
     return post("deleteProject/", {
         auth: createAuth(),
         id: id,
