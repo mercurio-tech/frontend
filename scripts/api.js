@@ -1,4 +1,4 @@
-const apiURL = "http://localhost:3000";
+const apiURL = "http://192.168.1.99:3000";
 const disableCache = true;
 function getCachedVal(key, ttl = 1000 * 60 * 5) {
     if (disableCache) return;
