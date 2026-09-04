@@ -132,6 +132,17 @@ async function getAuthRequest(name, password) {
     return result.result.message;
 }
 
+async function searchProjects(page, search, force) {
+    const cached = getCachedVal(`projects_search_${search}_${page || 1}`, 1000 * 60);
+    if (cached && !force) return cached;
+    const result = await get(`searchProjects/${search}/${page || 1}`);
+    if (checkError(result)) {
+        setCachedVal(`projects_search_${search}_${page || 1}`, null);
+        return null;
+    }
+    setCachedVal(`projects_search_${search}_${page || 1}`, result.result);
+    return result.result;
+}
 async function getProjectsRequest(page, force) {
     const cached = getCachedVal(`projects_${page || 1}`, 1000 * 60);
     if (cached && !force) return cached;

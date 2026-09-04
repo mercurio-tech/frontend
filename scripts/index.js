@@ -3,7 +3,11 @@ let populatedFilters = false;
 async function rerender(page, force, filters) {
     let projects;
     if (filters) {
-        projects = await getFilteredProjects(page || 1, filters);
+        if (filters.search) {
+            projects = await searchProjects(page || 1, filters.search, force)
+        } else {
+            projects = await getFilteredProjects(page || 1, filters);
+        }
     } else {
         projects = await getProjectsRequest(page || 1, force);
     }
@@ -73,6 +77,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
             document.getElementById("filters").classList.add("hidden2")
         }
+    })
+
+    document.getElementById("search-btn").addEventListener("click", () => {
+        let search = document.getElementById("search").value;
+        if (search === "") {
+            rerender(1, false);
+            return;
+        }
+        rerender(1, false, {
+            search: search,
+        });
     })
 
     document.getElementById("filter-btn").addEventListener("click", () => {
