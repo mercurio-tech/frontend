@@ -62,20 +62,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     fillForm(project);
     hideStatus();
-    /*btnSalvar.addEventListener("click", async () => {
-        btnSalvar.disabled = true;
-        setStatus("Salvando alterações...", "info");
-        let result;
-        try {
-            result = await updateProject(id, readForm(project));
-        } catch (error) {
-            result = { error: true, result: "Erro ao conectar com o servidor." };
-        }
-        if (result.error) {
-            setStatus(result.result, "erro");
-        } else {
-            setStatus("Projeto atualizado com sucesso.", "sucesso");
-        }
-        btnSalvar.disabled = false;
-    });*/
 });

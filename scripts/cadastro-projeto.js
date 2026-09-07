@@ -169,8 +169,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 ),
             );
 
-            await registerProject(formData);
-            document.getElementById("dialog").showModal()    
+            const msg = await registerProject(formData);
+            if (!msg.error) {
+                document.getElementById("dialog").showModal();
+            }
         });
     }
 
@@ -196,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             formData.append("auth", JSON.stringify(createAuth()));
             const id = getProjectId();
-            console.log(id)
+            console.log(id);
             const tags = tagsRaw.split(",").map((tag) => tag.trim());
             formData.append(
                 "project",
@@ -215,8 +217,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 ),
             );
 
-            await editProject(formData);
-            document.getElementById("dialog").showModal()    
+            const msg = await editProject(formData);
+            if (!msg.error) {
+                document.getElementById("dialog").showModal();
+            }
         });
     }
 });

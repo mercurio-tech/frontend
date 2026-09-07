@@ -1,4 +1,4 @@
-const apiURL = "http://192.168.1.99:3000";
+const apiURL = "http://localhost:3000";
 const disableCache = true;
 function getCachedVal(key, ttl = 1000 * 60 * 5) {
     if (disableCache) return;
@@ -95,19 +95,29 @@ function parseAdminAPIObject(admin) {
 }
 
 async function get(url) {
-    const response = await fetch(`${apiURL}/${url}`);
-    return await response.json();
+    try {
+        const response = await fetch(`${apiURL}/${url}`);
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        return { error: true, result: "Failed to fetch data" };
+    }
 }
 
 async function post(url, data) {
-    const response = await fetch(`${apiURL}/${url}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    });
-    return await response.json();
+    try {
+        const response = await fetch(`${apiURL}/${url}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        return await response.json();
+    } catch (error) {
+        console.error("Error posting data:", error);
+        return { error: true, result: "Failed to post data" };
+    }
 }
 
 async function postForm(url, data) {
@@ -133,7 +143,10 @@ async function getAuthRequest(name, password) {
 }
 
 async function searchProjects(page, search, force) {
-    const cached = getCachedVal(`projects_search_${search}_${page || 1}`, 1000 * 60);
+    const cached = getCachedVal(
+        `projects_search_${search}_${page || 1}`,
+        1000 * 60,
+    );
     if (cached && !force) return cached;
     const result = await get(`searchProjects/${search}/${page || 1}`);
     if (checkError(result)) {
