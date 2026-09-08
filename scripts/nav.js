@@ -20,7 +20,6 @@ let bar;
 
 document.addEventListener("DOMContentLoaded", async () => {
     bar = document.querySelector("footer");
-    updateFooter();
     hideLogOut();
     if (await checkAuth()) {
         hideLogin();
@@ -38,18 +37,4 @@ document.addEventListener("DOMContentLoaded", async () => {
         hideLogOut();
         showLogin();
     });
-});
-
-function updateFooter() {
-    if (!bar) return;
-    if (document.body.getBoundingClientRect().height <= window.innerHeight) {
-        bar.style.position = "absolute";
-        bar.style.bottom = "0px";
-        bar.style.width = "100%";
-    } else {
-        bar.style.position = "static";
-    }
-}
-window.addEventListener("resize", () => {
-    updateFooter();
 });

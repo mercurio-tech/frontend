@@ -143,6 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const desc = document.getElementById("description").value;
             const prof = document.getElementById("professor").value;
             const year = document.getElementById("year").value;
+            parseInt(year);
             const authors = document.getElementById("authors").value;
             const image = document.getElementById("fileInputImage").files[0];
             const pdf = document.getElementById("fileInputPDF").files[0];
@@ -186,6 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const desc = document.getElementById("description").value;
             const prof = document.getElementById("professor").value;
             const year = document.getElementById("year").value;
+            parseInt(year);
             const authors = document.getElementById("authors").value;
             const image = document.getElementById("fileInputImage").files[0];
             const pdf = document.getElementById("fileInputPDF").files[0];

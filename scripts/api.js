@@ -170,7 +170,7 @@ async function getProjectsRequest(page, force) {
 
 async function getFilteredProjects(page, filter) {
     const result = await get(
-        `getProjects/${page || 1}/${filter.year}/${filter.tags}/${filter.professor}`,
+        `getProjects/${page || 1}/${filter.year}/${filter.tags}/${filter.professor}/${filter.type}`,
     );
     if (checkError(result)) {
         return null;

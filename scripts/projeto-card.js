@@ -34,10 +34,17 @@ function renderProjectCard(project, showEditButton) {
     const membersElement = document.createElement("p");
     membersElement.innerText = `INTEGRANTES: ${members}`;
     membersContainer.appendChild(membersElement);
+    const typeContainer = document.createElement("div");
+    typeContainer.classList.add("badge-container");
+    const typeTag = document.createElement("h3");
+    typeTag.classList.add("badge");
+    typeTag.innerText = project.tipo;
+    typeContainer.appendChild(typeTag);
     main.appendChild(img);
     main.appendChild(tagContainer);
     main.appendChild(subtitleContainer);
     main.appendChild(membersContainer);
+    main.appendChild(typeContainer);
     if (showEditButton) {
         const edit = document.createElement("a");
         edit.classList.add("edit-btn");

@@ -4,7 +4,7 @@ async function rerender(page, force, filters) {
     let projects;
     if (filters) {
         if (filters.search) {
-            projects = await searchProjects(page || 1, filters.search, force)
+            projects = await searchProjects(page || 1, filters.search, force);
         } else {
             projects = await getFilteredProjects(page || 1, filters);
         }
@@ -73,11 +73,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("filter-show").addEventListener("click", () => {
         showingFilters = !showingFilters;
         if (showingFilters) {
-            document.getElementById("filters").classList.remove("hidden2")
+            document.getElementById("filters").classList.remove("hidden2");
         } else {
-            document.getElementById("filters").classList.add("hidden2")
+            document.getElementById("filters").classList.add("hidden2");
         }
-    })
+    });
 
     document.getElementById("search-btn").addEventListener("click", () => {
         let search = document.getElementById("search").value;
@@ -88,19 +88,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         rerender(1, false, {
             search: search,
         });
-    })
+    });
 
     document.getElementById("filter-btn").addEventListener("click", () => {
         let tags = document.getElementById("tags").value;
         let profs = document.getElementById("profs").value;
         let anos = document.getElementById("anos").value;
+        let tipo = document.getElementById("tipo").value;
         if (profs === "") profs = "null";
         if (tags === "") tags = "null";
         if (anos === "") anos = "null";
+        if (tipo === "") tipo = "null";
         rerender(1, false, {
             tags: tags,
             professor: profs,
             year: anos,
+            type: tipo,
         });
     });
 });
