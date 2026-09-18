@@ -2,6 +2,7 @@ let auth = null;
 let populatedFilters = false;
 let page = 1;
 let itemsPerPage = 10;
+let showingFilters = false;
 
 function hidePagination() {
     const pag = document.getElementById("pagination");
@@ -41,8 +42,10 @@ async function rerender(page, force, filters) {
                 if (!allProfs.includes(project.professor)) {
                     allProfs.push(project.professor);
                 }
-                if (!allTags.includes(project.tags)) {
-                    allTags.push(...project.tags);
+                for (const tag of project.tags) {
+                    if (!allTags.includes(tag)) {
+                        allTags.push(tag);
+                    }
                 }
                 if (!allYears.includes(project.ano)) {
                     allYears.push(project.ano);
@@ -91,17 +94,22 @@ async function rerender(page, force, filters) {
                 option.innerText = ano;
                 anosSelect.appendChild(option);
             }
+            for (const child of document.querySelector("#filters .content").children) {
+                child.disabled = !showingFilters;
+            }
         }
     } else {
         hidePagination()
     }
 }
 
-let showingFilters = false;
 document.addEventListener("DOMContentLoaded", async () => {
     auth = await checkAuth();
     rerender();
     document.getElementById("filter-show").addEventListener("click", () => {
+        for (const child of document.querySelector("#filters .content").children) {
+            child.disabled = showingFilters;
+        }
         showingFilters = !showingFilters;
         if (showingFilters) {
             document.getElementById("filters").classList.remove("hidden2");

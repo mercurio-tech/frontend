@@ -100,8 +100,12 @@ button[type="submit"] {
     margin-bottom: -5rem;
 }
 
+.filters.hidden2 * {
+    pointer-events: none;
+}
+
 .filters {
-    transition-property: opacity margin-bottom;
+    transition-property: opacity, margin-bottom;
     transition-duration: 1s;
     opacity: 1;
     padding-left: 1.8rem;
