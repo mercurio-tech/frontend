@@ -142,6 +142,18 @@ async function getAuthRequest(name, password) {
     return result.result.message;
 }
 
+async function getTagsRequest() {
+    const cached = getCachedVal("tags");
+    if (cached) return cached;
+    const result = await get(`getAvailableFilters/`);
+    if (checkError(result)) {
+        setCachedVal("tags", null);
+        return null;
+    }
+    setCachedVal("tags", result.result);
+    return result.result;
+}
+
 async function searchProjects(page, search, force) {
     const cached = getCachedVal(
         `projects_search_${search}_${page || 1}`,

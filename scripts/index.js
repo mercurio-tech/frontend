@@ -18,10 +18,54 @@ function showPagination() {
     }
 }
 
+async function getTags() {
+    const result = await getTagsRequest()
+    const allProfs = [];
+    const allTags = result.tags;
+    const allYears = [];
+    for (const filter of result.filters) {
+        if (!allProfs.includes(filter.professor)) {
+            allProfs.push(filter.professor)
+        }
+        if (!allYears.includes(filter.year)) {
+            allYears.push(filter.year)
+        }
+    }
+    const tagsSelect = document.getElementById("tags");
+    const profsSelect = document.getElementById("profs");
+    const anosSelect = document.getElementById("anos");
+    tagsSelect.innerHTML = `<option value="">TAG</option>`;
+    profsSelect.innerHTML = `<option value="">Professor(a)</option>`;
+    anosSelect.innerHTML = `<option value="">Ano</option>`;
+    allProfs.sort();
+    allTags.sort();
+    allYears.sort();
+    allYears.reverse();
+    for (const tag of allTags) {
+        const option = document.createElement("option");
+        option.value = tag;
+        option.innerText = tag;
+        tagsSelect.appendChild(option);
+    }
+    for (const prof of allProfs) {
+        const option = document.createElement("option");
+        option.value = prof;
+        option.innerText = prof;
+        profsSelect.appendChild(option);
+    }
+    for (const ano of allYears) {
+        const option = document.createElement("option");
+        option.value = ano;
+        option.innerText = ano;
+        anosSelect.appendChild(option);
+    }
+    for (const child of document.querySelector("#filters .content").children) {
+        child.disabled = !showingFilters;
+    }
+}
+
 async function rerender(page, force, filters) {
     let projects;
-    console.log(page)
-    console.log(page || 1)
     if (filters) {
         if (filters.search) {
             projects = await searchProjects(page || 1, filters.search, force);
@@ -34,23 +78,7 @@ async function rerender(page, force, filters) {
     if (projects) {
         const projectDiv = document.getElementById("projects");
         projectDiv.innerHTML = "";
-        const allProfs = [];
-        const allTags = [];
-        const allYears = [];
         for (const project of projects) {
-            if (!populatedFilters) {
-                if (!allProfs.includes(project.professor)) {
-                    allProfs.push(project.professor);
-                }
-                for (const tag of project.tags) {
-                    if (!allTags.includes(tag)) {
-                        allTags.push(tag);
-                    }
-                }
-                if (!allYears.includes(project.ano)) {
-                    allYears.push(project.ano);
-                }
-            }
             const projectCard = renderProjectCard(project, auth);
             projectDiv.appendChild(projectCard);
         }
@@ -64,40 +92,6 @@ async function rerender(page, force, filters) {
             showPagination();
         }
         document.getElementById("page-number").innerText = page || 1;
-        if (!populatedFilters) {
-            populatedFilters = true;
-            const tagsSelect = document.getElementById("tags");
-            const profsSelect = document.getElementById("profs");
-            const anosSelect = document.getElementById("anos");
-            tagsSelect.innerHTML = `<option value="">TAG</option>`;
-            profsSelect.innerHTML = `<option value="">Professor(a)</option>`;
-            anosSelect.innerHTML = `<option value="">Ano</option>`;
-            allProfs.sort();
-            allTags.sort();
-            allYears.sort();
-            allYears.reverse();
-            for (const tag of allTags) {
-                const option = document.createElement("option");
-                option.value = tag;
-                option.innerText = tag;
-                tagsSelect.appendChild(option);
-            }
-            for (const prof of allProfs) {
-                const option = document.createElement("option");
-                option.value = prof;
-                option.innerText = prof;
-                profsSelect.appendChild(option);
-            }
-            for (const ano of allYears) {
-                const option = document.createElement("option");
-                option.value = ano;
-                option.innerText = ano;
-                anosSelect.appendChild(option);
-            }
-            for (const child of document.querySelector("#filters .content").children) {
-                child.disabled = !showingFilters;
-            }
-        }
     } else {
         hidePagination()
     }
@@ -105,6 +99,7 @@ async function rerender(page, force, filters) {
 
 document.addEventListener("DOMContentLoaded", async () => {
     auth = await checkAuth();
+    getTags();
     rerender();
     document.getElementById("filter-show").addEventListener("click", () => {
         for (const child of document.querySelector("#filters .content").children) {
