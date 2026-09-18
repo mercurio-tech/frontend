@@ -269,3 +269,22 @@ button[type="submit"] {
 .delete-btn i {
     font-size: 1.25rem;
 }
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1.5rem;
+}
+.pagination button {
+    display: flex;
+    justify-items: center;
+    background-color: white;
+    color: black;
+    padding: 0.1rem;
+    font-size: 1.2rem;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+}
