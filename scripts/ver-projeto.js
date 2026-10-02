@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const project = await getDetailedProjectRequest(id);
     if (project) {
         document.querySelector(".banner-card img").src =
-            `${apiURL}/files/imagens/${id}/imagem.${project.extensao}`;
+            `${filesURL}/imagens/${id}/imagem.${project.extensao}`;
         document.getElementById("project-title").innerText = project.titulo;
         document.getElementById("project-description").innerText =
             project.subtitulo;
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         profContainer.appendChild(profName);
 
         document.getElementById("download").href =
-            `${apiURL}/files/pdfs/${id}/arquivo.pdf`;
+            `${filesURL}/pdfs/${id}/arquivo.pdf`;
 
         document.getElementById("project").classList.remove("hidden");
     } else {

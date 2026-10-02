@@ -12,7 +12,7 @@ function renderProjectCard(project, showEditButton) {
     main.href = `projeto.html?id=${id}`;
     main.id = `project-${id}`;
     const img = document.createElement("img");
-    img.src = `${apiURL}/files/imagens/${id}/imagem.${extension}`;
+    img.src = `${filesURL}/imagens/${id}/imagem.${extension}`;
     const tagContainer = document.createElement("div");
     tagContainer.classList.add("badge-container");
     for (const element of tags) {

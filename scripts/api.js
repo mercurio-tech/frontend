@@ -1,4 +1,6 @@
 const apiURL = "http://localhost:3000";
+//const filesURL = "http://localhost:3000/files";
+const filesURL = "https://bzwxteiawnjvobjpuawx.supabase.co/storage/v1/object/public/projetos"
 const disableCache = true;
 function getCachedVal(key, ttl = 1000 * 60 * 5) {
     if (disableCache) return;
