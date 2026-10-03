@@ -36,5 +36,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         localStorage.removeItem("senha");
         hideLogOut();
         showLogin();
+        if (rerender !== undefined) {
+            rerender(1, true);
+        }
     });
 });
