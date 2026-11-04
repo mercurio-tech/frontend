@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             `${filesURL}/imagens/${id}/imagem.${project.extensao}`;
         document.getElementById("project-title").innerText = project.titulo;
         document.getElementById("project-description").innerText =
-            project.subtitulo;
+            project.descricao;
         const nameContainer = document.getElementById("names");
         project.aluno.split(new RegExp(",|;")).forEach((alunoRaw) => {
             const aluno = alunoRaw.trim();
